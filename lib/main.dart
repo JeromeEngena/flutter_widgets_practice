@@ -15,6 +15,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(primarySwatch: Colors.green),
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue,
@@ -28,12 +29,16 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            ElevatedButton(
-              onPressed: () {
-                setState(() {});
-              },
-              child: const Text("Click Here",
-                  style: TextStyle(color: Colors.white)),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  setState(() {});
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                child: const Text("Click Here",
+                    style: TextStyle(color: Colors.white)),
+              ),
             ),
           ],
         ),
