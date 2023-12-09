@@ -12,6 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  int counter = 0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,18 +29,38 @@ class _MyAppState extends State<MyApp> {
           centerTitle: true,
         ),
 
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Image.asset("images/sky.jpg"),
-              Image.network(
-                  "https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg.webp"),
-              Image.asset("images/sky.jpg"),
-            ],
-          ),
+        body: Column(
+          mainAxisAlignment: counter == 0 ? MainAxisAlignment.start : counter == 1 ? MainAxisAlignment.center : MainAxisAlignment.end,
+          children: [
+            Row(
+          mainAxisAlignment: counter == 0 ? MainAxisAlignment.start : counter == 1 ? MainAxisAlignment.center : MainAxisAlignment.end,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      counter < 2 ? counter++ : counter = 0;
+                    });
+                  },
+                  child: const Text("Elevated Button"),
+                ),
+              ],
+            ),
+          ],
         ),
+
+        // SingleChildScrollView(
+        //   child: Column(
+        //     children: [
+        //       Image.asset("images/sky.jpg"),
+        //       Image.network(
+        //           "https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg.webp"),
+        //       Image.asset("images/sky.jpg"),
+        //     ],
+        //   ),
+        // ),
         //
         //
+
         // Column(
         //   children: [
         //     Padding(
